@@ -11797,6 +11797,7 @@ div#notebook {
 └── docs                # documentation files for methods, parameters, data dictionaries, etc.</pre><p>Download the zipped folder package available at <a href="https://goo.gl/SJUrcJ">goo.gl/SJUrcJ</a> and place it on your desktop. Uncompress the files. We'll be working with the Jupyter Notebook located at /analysis/data/data_scripts/python-cleaning.ipynb. Alternately, you can clone the course materials using</p>
 <p><code>git clone https\://github\.com/NYU-DataServices\/python-cleaning\.git</code></p>
 <p>You can also find this notebook (in non-executable form) at <a href="https://nyu-dataservices.github.io/python-cleaning/">https://nyu-dataservices.github.io/python-cleaning/</a></p>
+<p>You are welcome to deploy this Jupyter Notebook in the Jupyter environment of your choice (departmental hub, local instance). You can also use it on our JupyterHub instance here: <a href="https://rdm.apps.brc.stern.nyu.edu/">https://rdm.apps.brc.stern.nyu.edu/</a></p>
 
 </div>
 </div>
@@ -11815,7 +11816,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -11828,325 +11829,9 @@ div#notebook {
 <span class="c1">#directory = r&#39;..\data\\&#39;</span>
 
 <span class="c1"># Load a CSV into a data frame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/water-consumption-nyc.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-                 <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Year</th>
-      <th>New York City Population</th>
-      <th>NYC Consumption(Million gallons per day)</th>
-      <th>Per Capita(Gallons per person per day)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1979</td>
-      <td>7102100</td>
-      <td>1512</td>
-      <td>213</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1980</td>
-      <td>7071639</td>
-      <td>1506</td>
-      <td>213</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1981</td>
-      <td>7089241</td>
-      <td>1309</td>
-      <td>185</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1982</td>
-      <td>7109105</td>
-      <td>1382</td>
-      <td>194</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1983</td>
-      <td>7181224</td>
-      <td>1424</td>
-      <td>198</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1984</td>
-      <td>7234514</td>
-      <td>1465</td>
-      <td>203</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1985</td>
-      <td>7274054</td>
-      <td>1326</td>
-      <td>182</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1986</td>
-      <td>7319246</td>
-      <td>1351</td>
-      <td>185</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1987</td>
-      <td>7342476</td>
-      <td>1447</td>
-      <td>197</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1988</td>
-      <td>7353719</td>
-      <td>1484</td>
-      <td>202</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>1989</td>
-      <td>7344175</td>
-      <td>1402</td>
-      <td>191</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>1990</td>
-      <td>7335650</td>
-      <td>1424</td>
-      <td>194</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>1991</td>
-      <td>7374501</td>
-      <td>1469</td>
-      <td>199</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>1992</td>
-      <td>7428944</td>
-      <td>1369</td>
-      <td>184</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>1993</td>
-      <td>7506166</td>
-      <td>1369</td>
-      <td>182</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>1994</td>
-      <td>7570458</td>
-      <td>1358</td>
-      <td>179</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>1995</td>
-      <td>7633040</td>
-      <td>1326</td>
-      <td>174</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>1996</td>
-      <td>7697812</td>
-      <td>1298</td>
-      <td>169</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>1997</td>
-      <td>7773443</td>
-      <td>1206</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1998</td>
-      <td>7858259</td>
-      <td>1220</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>1999</td>
-      <td>7947660</td>
-      <td>1237</td>
-      <td>156</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>2000</td>
-      <td>8008278</td>
-      <td>1240</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>2001</td>
-      <td>8024964</td>
-      <td>1184</td>
-      <td>148</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>2002</td>
-      <td>8041649</td>
-      <td>1136</td>
-      <td>141</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>2003</td>
-      <td>8058335</td>
-      <td>1094</td>
-      <td>136</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>2004</td>
-      <td>8075020</td>
-      <td>1100</td>
-      <td>136</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>2005</td>
-      <td>8091706</td>
-      <td>1138</td>
-      <td>141</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>2006</td>
-      <td>8108391</td>
-      <td>1069</td>
-      <td>132</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>2007</td>
-      <td>8125077</td>
-      <td>1114</td>
-      <td>137</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>2008</td>
-      <td>8141762</td>
-      <td>1098</td>
-      <td>135</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>2009</td>
-      <td>8158448</td>
-      <td>1007</td>
-      <td>123</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>2010</td>
-      <td>8175133</td>
-      <td>1039</td>
-      <td>127</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>2011</td>
-      <td>8175133</td>
-      <td>1021</td>
-      <td>125</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>2012</td>
-      <td>8336697</td>
-      <td>1009</td>
-      <td>121</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>2013</td>
-      <td>8405837</td>
-      <td>1006</td>
-      <td>120</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>2014</td>
-      <td>8491079</td>
-      <td>996</td>
-      <td>117</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>2015</td>
-      <td>8550405</td>
-      <td>1009</td>
-      <td>118</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>2016</td>
-      <td>8537673</td>
-      <td>1002</td>
-      <td>117</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12166,15 +11851,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">water_dictionary</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/water-consumption-nyc.json&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="c1">## We can take a look at the data portion of the file (rather than the metadata stored in the JSON)</span>
-
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-    
+<div class=" highlight hl-ipython3"><pre><span></span>    
 </pre></div>
 
 </div>
@@ -12191,21 +11868,6 @@ div#notebook {
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">water_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">water_df</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12231,72 +11893,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
-
-<span class="c1"># Create a connection object to our sqlite3 database file</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/water-consumption.db&#39;</span><span class="p">)</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-
-<span class="c1"># Select data from the water table</span>
-
-<span class="n">rows</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM water&quot;</span><span class="p">)</span>
-
-<span class="c1"># The response is a list of tuples, each tuple containing a cell values</span>
-
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We can modify our data</span>
-
-<span class="n">newrow</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;85312743&#39;</span><span class="p">,</span> <span class="s1">&#39;1003&#39;</span><span class="p">,</span> <span class="s1">&#39;158&#39;</span><span class="p">)</span>
-
-<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO water VALUES (?,?,?,?)&quot;</span><span class="p">,</span> <span class="n">newrow</span><span class="p">)</span>
-
-<span class="c1"># Commit the changes</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-
-<span class="c1"># View the new row</span>
-
-<span class="n">rows</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM water&quot;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Or...we can once again just read our SQLite table directly into a dataframe:</span>
-
-<span class="n">water_sql_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM water&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">water_sql_df</span><span class="p">)</span>
-
-
-<span class="c1">#Close the connnection</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span>
 </pre></div>
 
 </div>
@@ -12314,25 +11911,6 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># Loading an array from the .npy file</span>
-
-<span class="n">water_npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/raw_data/water_consumption.npy&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">water_npy</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12344,26 +11922,6 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We have a cleaned data file, here represented by a small table</span>
-
-<span class="n">cleaned_table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:[[</span><span class="s1">&#39;1979&#39;</span><span class="p">,</span> <span class="s1">&#39;7102100&#39;</span><span class="p">,</span> <span class="s1">&#39;1512&#39;</span><span class="p">,</span> <span class="s1">&#39;213&#39;</span><span class="p">],</span>
-                         <span class="p">[</span><span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;8024964&#39;</span><span class="p">,</span> <span class="s1">&#39;1184&#39;</span><span class="p">,</span> <span class="s1">&#39;148&#39;</span><span class="p">],</span>
-                        <span class="p">[</span><span class="s1">&#39;2009&#39;</span><span class="p">,</span> <span class="s1">&#39;8223444&#39;</span><span class="p">,</span> <span class="s1">&#39;1204&#39;</span><span class="p">,</span> <span class="s1">&#39;178&#39;</span><span class="p">]]}</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/new_json.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cleaned_table</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12372,19 +11930,6 @@ div#notebook {
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/new_numpy.npy&#39;</span><span class="p">,</span> <span class="n">cleaned_table</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12396,34 +11941,6 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We first establish a new database and connect to it</span>
-
-<span class="n">conn_out</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/cleaned_sql.db&#39;</span><span class="p">)</span>
-<span class="n">cursor_out</span> <span class="o">=</span> <span class="n">conn_out</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-
-<span class="c1"># Then we create a new table</span>
-
-<span class="n">cursor_out</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS newsql</span>
-<span class="s1">                  (year text not null unique, nyc_population text, consumption text, per_capita text) </span>
-<span class="s1">               &#39;&#39;&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">insert_row</span> <span class="ow">in</span> <span class="n">cleaned_table</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]:</span>
-    <span class="n">cursor_out</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO newsql VALUES (?,?,?,?)&quot;</span><span class="p">,</span> <span class="n">insert_row</span><span class="p">)</span>
-
-<span class="n">conn_out</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-<span class="n">conn_out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12433,21 +11950,6 @@ div#notebook {
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cleaned_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cleaned_table</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;nyc_population&#39;</span><span class="p">,</span><span class="s1">&#39;consumption&#39;</span><span class="p">,</span> <span class="s1">&#39;per_capita&#39;</span><span class="p">])</span>
-
-<span class="n">cleaned_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/new_df.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
