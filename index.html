@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>python-cleaning-ChallengeAnswers</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>python-cleaning-session-full</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11797,7 +11797,7 @@ div#notebook {
 └── docs                # documentation files for methods, parameters, data dictionaries, etc.</pre><p>Download the zipped folder package available at <a href="https://goo.gl/SJUrcJ">goo.gl/SJUrcJ</a> and place it on your desktop. Uncompress the files. We'll be working with the Jupyter Notebook located at /analysis/data/data_scripts/python-cleaning.ipynb. Alternately, you can clone the course materials using</p>
 <p><code>git clone https://github.com/NYU-DataServices/python-cleaning.git</code></p>
 <p>You can also find this notebook (in non-executable form) at <a href="https://nyu-dataservices.github.io/python-cleaning/">https://nyu-dataservices.github.io/python-cleaning/</a></p>
-<p>You are welcome to deploy this Jupyter Notebook in the Jupyter environment of your choice (departmental hub, local instance). You can also use it on our JupyterHub instance here: <a href="https://jupyter.hpc.nyu.edu/dataservices">https://jupyter.hpc.nyu.edu/dataservices</a>. When prompted, you will need to add an exception to the security. Click on "advanced" or "more options," etc., and select confirm exception.</p>
+<p>You are welcome to deploy this Jupyter Notebook in the Jupyter environment of your choice (departmental hub, local instance). You can also use it on our JupyterHub instance here: <a href="https://tutorials-1.rcnyu.org">https://tutorials-1.rcnyu.org</a></p>
 
 </div>
 </div>
@@ -11816,26 +11816,143 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="c1">## Set a working directory for our /data parent directory</span>
 <span class="c1">## Mac</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;../&#39;</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;../raw_data&#39;</span>
 <span class="c1">## Windows</span>
-<span class="c1">#directory = r&#39;..\data\\&#39;</span>
+<span class="c1">#directory = r&#39;..\data\raw_data\\&#39;</span>
 
-<span class="c1"># Load a CSV into a data frame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/water-consumption-nyc.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+<span class="c1"># Load a CSV into a data frame for Mac. For windows, substitute left-slashes</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span>
+            <span class="s1">&#39;water-consumption-nyc.csv&#39;</span><span class="p">),</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
                  <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>New York City Population</th>
+      <th>NYC Consumption(Million gallons per day)</th>
+      <th>Per Capita(Gallons per person per day)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1979</td>
+      <td>7102100</td>
+      <td>1512</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1980</td>
+      <td>7071639</td>
+      <td>1506</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1981</td>
+      <td>7089241</td>
+      <td>1309</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1982</td>
+      <td>7109105</td>
+      <td>1382</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1983</td>
+      <td>7181224</td>
+      <td>1424</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1984</td>
+      <td>7234514</td>
+      <td>1465</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1985</td>
+      <td>7274054</td>
+      <td>1326</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1986</td>
+      <td>7319246</td>
+      <td>1351</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1987</td>
+      <td>7342476</td>
+      <td>1447</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1988</td>
+      <td>7353719</td>
+      <td>1484</td>
+      <td>202</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -11852,20 +11969,51 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">water_dictionary</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/water-consumption-nyc.json&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">water_dictionary</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span>
+        <span class="s1">&#39;water-consumption-nyc.json&#39;</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
-<span class="c1">## We can take a look at the data portion of the file (rather than the metadata stored in the JSON)</span>
+<span class="c1">## We can take a look at the data portion of the file </span>
+<span class="c1">## (rather than the metadata stored in the JSON)</span>
 
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, &#39;4BE85703-1B5D-49E2-A418-75BEDD478BB5&#39;, 1, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1979&#39;, &#39;7102100&#39;, &#39;1512&#39;, &#39;213&#39;]
+[2, &#39;971B06B7-1135-4887-B409-DAC19D845EBC&#39;, 2, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1980&#39;, &#39;7071639&#39;, &#39;1506&#39;, &#39;213&#39;]
+[3, &#39;71AEF5AD-AA70-449C-899A-2514E97F893D&#39;, 3, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1981&#39;, &#39;7089241&#39;, &#39;1309&#39;, &#39;185&#39;]
+[4, &#39;7914DA35-A410-44C2-A0D1-B11385B6B3F4&#39;, 4, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1982&#39;, &#39;7109105&#39;, &#39;1382&#39;, &#39;194&#39;]
+[5, &#39;A1347CE5-F309-45C0-B372-E797A32FB0E5&#39;, 5, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1983&#39;, &#39;7181224&#39;, &#39;1424&#39;, &#39;198&#39;]
+[6, &#39;DA07F92C-B10E-4D5B-A479-17522E0C5C8C&#39;, 6, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1984&#39;, &#39;7234514&#39;, &#39;1465&#39;, &#39;203&#39;]
+[7, &#39;45CD9C9C-172C-4F0B-BC72-319E9B2EA6B0&#39;, 7, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1985&#39;, &#39;7274054&#39;, &#39;1326&#39;, &#39;182&#39;]
+[8, &#39;B76329F9-740B-41BC-900B-62AA4790DAD6&#39;, 8, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1986&#39;, &#39;7319246&#39;, &#39;1351&#39;, &#39;185&#39;]
+[9, &#39;4B66D71F-642D-4770-9123-BAB33E1E8205&#39;, 9, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1987&#39;, &#39;7342476&#39;, &#39;1447&#39;, &#39;197&#39;]
+[10, &#39;6EB7E8EA-D4D9-4DDF-8469-ADFC8FECB06F&#39;, 10, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1988&#39;, &#39;7353719&#39;, &#39;1484&#39;, &#39;202&#39;]
+[11, &#39;C2FAE03C-30CF-4861-9606-B96BB75C072A&#39;, 11, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1989&#39;, &#39;7344175&#39;, &#39;1402&#39;, &#39;191&#39;]
+[12, &#39;D5507E3A-F453-4FAA-847A-AE76CDB2558C&#39;, 12, 1495480711, &#39;994730&#39;, 1495480711, &#39;994730&#39;, None, &#39;1990&#39;, &#39;7335650&#39;, &#39;1424&#39;, &#39;194&#39;]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -11874,7 +12022,6 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bonus</strong></p>
 <p>Let's turn the list of lists in which NYC has stored the data into a dataframe. Because the data has been stored as a list of lists, this is a one-step process:</p>
 
 </div>
@@ -11882,15 +12029,219 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">water_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">water_df</span><span class="p">)</span>
+<span class="n">water_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>4BE85703-1B5D-49E2-A418-75BEDD478BB5</td>
+      <td>1</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1979</td>
+      <td>7102100</td>
+      <td>1512</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>971B06B7-1135-4887-B409-DAC19D845EBC</td>
+      <td>2</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1980</td>
+      <td>7071639</td>
+      <td>1506</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>71AEF5AD-AA70-449C-899A-2514E97F893D</td>
+      <td>3</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1981</td>
+      <td>7089241</td>
+      <td>1309</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7914DA35-A410-44C2-A0D1-B11385B6B3F4</td>
+      <td>4</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1982</td>
+      <td>7109105</td>
+      <td>1382</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>A1347CE5-F309-45C0-B372-E797A32FB0E5</td>
+      <td>5</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1983</td>
+      <td>7181224</td>
+      <td>1424</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>DA07F92C-B10E-4D5B-A479-17522E0C5C8C</td>
+      <td>6</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1984</td>
+      <td>7234514</td>
+      <td>1465</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>45CD9C9C-172C-4F0B-BC72-319E9B2EA6B0</td>
+      <td>7</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1985</td>
+      <td>7274054</td>
+      <td>1326</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>B76329F9-740B-41BC-900B-62AA4790DAD6</td>
+      <td>8</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1986</td>
+      <td>7319246</td>
+      <td>1351</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>4B66D71F-642D-4770-9123-BAB33E1E8205</td>
+      <td>9</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1987</td>
+      <td>7342476</td>
+      <td>1447</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6EB7E8EA-D4D9-4DDF-8469-ADFC8FECB06F</td>
+      <td>10</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1988</td>
+      <td>7353719</td>
+      <td>1484</td>
+      <td>202</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -11906,31 +12257,233 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Challenge 1</span>
 
-<span class="n">water_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;position&#39;</span><span class="p">,</span>
-                                                            <span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;created_meta&#39;</span><span class="p">,</span>
-                                                            <span class="s1">&#39;updated_at&#39;</span><span class="p">,</span><span class="s1">&#39;updated_meta&#39;</span><span class="p">,</span>
-                                                            <span class="s1">&#39;meta&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;New York City Population&#39;</span><span class="p">,</span>
-                                                            <span class="s1">&#39;NYC Consumption(Millions galls per day)&#39;</span><span class="p">,</span>
-                                                             <span class="s1">&#39;Per Capita(Gallons per person per day)&#39;</span><span class="p">])</span>
+<span class="n">water_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> 
+        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;position&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;created_meta&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;updated_at&#39;</span><span class="p">,</span><span class="s1">&#39;updated_meta&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;meta&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;New York City Population&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;NYC Consumption(Millions galls per day)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Per Capita(Gallons per person per day)&#39;</span><span class="p">])</span>
 
 <span class="c1"># Alternative, more automated way:</span>
 
-<span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;view&#39;</span><span class="p">][</span><span class="s1">&#39;columns&#39;</span><span class="p">]:</span>
-    <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col_name</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col_name</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;view&#39;</span><span class="p">][</span><span class="s1">&#39;columns&#39;</span><span class="p">]]</span>
 
 <span class="n">water_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">water_dictionary</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">water_df</span><span class="p">)</span>
+<span class="n">water_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sid</th>
+      <th>id</th>
+      <th>position</th>
+      <th>created_at</th>
+      <th>created_meta</th>
+      <th>updated_at</th>
+      <th>updated_meta</th>
+      <th>meta</th>
+      <th>Year</th>
+      <th>New York City Population</th>
+      <th>NYC Consumption(Million gallons per day)</th>
+      <th>Per Capita(Gallons per person per day)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>4BE85703-1B5D-49E2-A418-75BEDD478BB5</td>
+      <td>1</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1979</td>
+      <td>7102100</td>
+      <td>1512</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>971B06B7-1135-4887-B409-DAC19D845EBC</td>
+      <td>2</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1980</td>
+      <td>7071639</td>
+      <td>1506</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>71AEF5AD-AA70-449C-899A-2514E97F893D</td>
+      <td>3</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1981</td>
+      <td>7089241</td>
+      <td>1309</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7914DA35-A410-44C2-A0D1-B11385B6B3F4</td>
+      <td>4</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1982</td>
+      <td>7109105</td>
+      <td>1382</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>A1347CE5-F309-45C0-B372-E797A32FB0E5</td>
+      <td>5</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1983</td>
+      <td>7181224</td>
+      <td>1424</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>DA07F92C-B10E-4D5B-A479-17522E0C5C8C</td>
+      <td>6</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1984</td>
+      <td>7234514</td>
+      <td>1465</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>45CD9C9C-172C-4F0B-BC72-319E9B2EA6B0</td>
+      <td>7</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1985</td>
+      <td>7274054</td>
+      <td>1326</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>B76329F9-740B-41BC-900B-62AA4790DAD6</td>
+      <td>8</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1986</td>
+      <td>7319246</td>
+      <td>1351</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>4B66D71F-642D-4770-9123-BAB33E1E8205</td>
+      <td>9</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1987</td>
+      <td>7342476</td>
+      <td>1447</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6EB7E8EA-D4D9-4DDF-8469-ADFC8FECB06F</td>
+      <td>10</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1988</td>
+      <td>7353719</td>
+      <td>1484</td>
+      <td>202</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -11947,14 +12500,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="c1"># Create a connection object to our sqlite3 database file</span>
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/water-consumption.db&#39;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span>
+                                    <span class="s1">&#39;water-consumption.db&#39;</span><span class="p">))</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
@@ -11972,10 +12526,70 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(&#39;1979&#39;, &#39;7102100&#39;, &#39;1512&#39;, &#39;213&#39;)
+(&#39;1980&#39;, &#39;7071639&#39;, &#39;1506&#39;, &#39;213&#39;)
+(&#39;1981&#39;, &#39;7089241&#39;, &#39;1309&#39;, &#39;185&#39;)
+(&#39;1982&#39;, &#39;7109105&#39;, &#39;1382&#39;, &#39;194&#39;)
+(&#39;1983&#39;, &#39;7181224&#39;, &#39;1424&#39;, &#39;198&#39;)
+(&#39;1984&#39;, &#39;7234514&#39;, &#39;1465&#39;, &#39;203&#39;)
+(&#39;1985&#39;, &#39;7274054&#39;, &#39;1326&#39;, &#39;182&#39;)
+(&#39;1986&#39;, &#39;7319246&#39;, &#39;1351&#39;, &#39;185&#39;)
+(&#39;1987&#39;, &#39;7342476&#39;, &#39;1447&#39;, &#39;197&#39;)
+(&#39;1988&#39;, &#39;7353719&#39;, &#39;1484&#39;, &#39;202&#39;)
+(&#39;1989&#39;, &#39;7344175&#39;, &#39;1402&#39;, &#39;191&#39;)
+(&#39;1990&#39;, &#39;7335650&#39;, &#39;1424&#39;, &#39;194&#39;)
+(&#39;1991&#39;, &#39;7374501&#39;, &#39;1469&#39;, &#39;199&#39;)
+(&#39;1992&#39;, &#39;7428944&#39;, &#39;1369&#39;, &#39;184&#39;)
+(&#39;1993&#39;, &#39;7506166&#39;, &#39;1369&#39;, &#39;182&#39;)
+(&#39;1994&#39;, &#39;7570458&#39;, &#39;1358&#39;, &#39;179&#39;)
+(&#39;1995&#39;, &#39;7633040&#39;, &#39;1326&#39;, &#39;174&#39;)
+(&#39;1996&#39;, &#39;7697812&#39;, &#39;1298&#39;, &#39;169&#39;)
+(&#39;1997&#39;, &#39;7773443&#39;, &#39;1206&#39;, &#39;155&#39;)
+(&#39;1998&#39;, &#39;7858259&#39;, &#39;1220&#39;, &#39;155&#39;)
+(&#39;1999&#39;, &#39;7947660&#39;, &#39;1237&#39;, &#39;156&#39;)
+(&#39;2000&#39;, &#39;8008278&#39;, &#39;1240&#39;, &#39;155&#39;)
+(&#39;2001&#39;, &#39;8024964&#39;, &#39;1184&#39;, &#39;148&#39;)
+(&#39;2002&#39;, &#39;8041649&#39;, &#39;1136&#39;, &#39;141&#39;)
+(&#39;2003&#39;, &#39;8058335&#39;, &#39;1094&#39;, &#39;136&#39;)
+(&#39;2004&#39;, &#39;8075020&#39;, &#39;1100&#39;, &#39;136&#39;)
+(&#39;2005&#39;, &#39;8091706&#39;, &#39;1138&#39;, &#39;141&#39;)
+(&#39;2006&#39;, &#39;8108391&#39;, &#39;1069&#39;, &#39;132&#39;)
+(&#39;2007&#39;, &#39;8125077&#39;, &#39;1114&#39;, &#39;137&#39;)
+(&#39;2008&#39;, &#39;8141762&#39;, &#39;1098&#39;, &#39;135&#39;)
+(&#39;2009&#39;, &#39;8158448&#39;, &#39;1007&#39;, &#39;123&#39;)
+(&#39;2010&#39;, &#39;8175133&#39;, &#39;1039&#39;, &#39;127&#39;)
+(&#39;2011&#39;, &#39;8175133&#39;, &#39;1021&#39;, &#39;125&#39;)
+(&#39;2012&#39;, &#39;8336697&#39;, &#39;1009&#39;, &#39;121&#39;)
+(&#39;2013&#39;, &#39;8405837&#39;, &#39;1006&#39;, &#39;120&#39;)
+(&#39;2014&#39;, &#39;8491079&#39;, &#39;996&#39;, &#39;117&#39;)
+(&#39;2015&#39;, &#39;8550405&#39;, &#39;1009&#39;, &#39;118&#39;)
+(&#39;2016&#39;, &#39;8537673&#39;, &#39;1002&#39;, &#39;117&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We can modify our data</span>
@@ -12000,25 +12614,202 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(&#39;1979&#39;, &#39;7102100&#39;, &#39;1512&#39;, &#39;213&#39;)
+(&#39;1980&#39;, &#39;7071639&#39;, &#39;1506&#39;, &#39;213&#39;)
+(&#39;1981&#39;, &#39;7089241&#39;, &#39;1309&#39;, &#39;185&#39;)
+(&#39;1982&#39;, &#39;7109105&#39;, &#39;1382&#39;, &#39;194&#39;)
+(&#39;1983&#39;, &#39;7181224&#39;, &#39;1424&#39;, &#39;198&#39;)
+(&#39;1984&#39;, &#39;7234514&#39;, &#39;1465&#39;, &#39;203&#39;)
+(&#39;1985&#39;, &#39;7274054&#39;, &#39;1326&#39;, &#39;182&#39;)
+(&#39;1986&#39;, &#39;7319246&#39;, &#39;1351&#39;, &#39;185&#39;)
+(&#39;1987&#39;, &#39;7342476&#39;, &#39;1447&#39;, &#39;197&#39;)
+(&#39;1988&#39;, &#39;7353719&#39;, &#39;1484&#39;, &#39;202&#39;)
+(&#39;1989&#39;, &#39;7344175&#39;, &#39;1402&#39;, &#39;191&#39;)
+(&#39;1990&#39;, &#39;7335650&#39;, &#39;1424&#39;, &#39;194&#39;)
+(&#39;1991&#39;, &#39;7374501&#39;, &#39;1469&#39;, &#39;199&#39;)
+(&#39;1992&#39;, &#39;7428944&#39;, &#39;1369&#39;, &#39;184&#39;)
+(&#39;1993&#39;, &#39;7506166&#39;, &#39;1369&#39;, &#39;182&#39;)
+(&#39;1994&#39;, &#39;7570458&#39;, &#39;1358&#39;, &#39;179&#39;)
+(&#39;1995&#39;, &#39;7633040&#39;, &#39;1326&#39;, &#39;174&#39;)
+(&#39;1996&#39;, &#39;7697812&#39;, &#39;1298&#39;, &#39;169&#39;)
+(&#39;1997&#39;, &#39;7773443&#39;, &#39;1206&#39;, &#39;155&#39;)
+(&#39;1998&#39;, &#39;7858259&#39;, &#39;1220&#39;, &#39;155&#39;)
+(&#39;1999&#39;, &#39;7947660&#39;, &#39;1237&#39;, &#39;156&#39;)
+(&#39;2000&#39;, &#39;8008278&#39;, &#39;1240&#39;, &#39;155&#39;)
+(&#39;2001&#39;, &#39;8024964&#39;, &#39;1184&#39;, &#39;148&#39;)
+(&#39;2002&#39;, &#39;8041649&#39;, &#39;1136&#39;, &#39;141&#39;)
+(&#39;2003&#39;, &#39;8058335&#39;, &#39;1094&#39;, &#39;136&#39;)
+(&#39;2004&#39;, &#39;8075020&#39;, &#39;1100&#39;, &#39;136&#39;)
+(&#39;2005&#39;, &#39;8091706&#39;, &#39;1138&#39;, &#39;141&#39;)
+(&#39;2006&#39;, &#39;8108391&#39;, &#39;1069&#39;, &#39;132&#39;)
+(&#39;2007&#39;, &#39;8125077&#39;, &#39;1114&#39;, &#39;137&#39;)
+(&#39;2008&#39;, &#39;8141762&#39;, &#39;1098&#39;, &#39;135&#39;)
+(&#39;2009&#39;, &#39;8158448&#39;, &#39;1007&#39;, &#39;123&#39;)
+(&#39;2010&#39;, &#39;8175133&#39;, &#39;1039&#39;, &#39;127&#39;)
+(&#39;2011&#39;, &#39;8175133&#39;, &#39;1021&#39;, &#39;125&#39;)
+(&#39;2012&#39;, &#39;8336697&#39;, &#39;1009&#39;, &#39;121&#39;)
+(&#39;2013&#39;, &#39;8405837&#39;, &#39;1006&#39;, &#39;120&#39;)
+(&#39;2014&#39;, &#39;8491079&#39;, &#39;996&#39;, &#39;117&#39;)
+(&#39;2015&#39;, &#39;8550405&#39;, &#39;1009&#39;, &#39;118&#39;)
+(&#39;2016&#39;, &#39;8537673&#39;, &#39;1002&#39;, &#39;117&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+(&#39;2017&#39;, &#39;85312743&#39;, &#39;1003&#39;, &#39;158&#39;)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Or...we can once again just read our SQLite table directly into a dataframe:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Or...we can once again just read our SQLite table </span>
+<span class="c1"># directly into a dataframe:</span>
 
 <span class="n">water_sql_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM water&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">water_sql_df</span><span class="p">)</span>
-
 
 <span class="c1">#Close the connnection</span>
 
 <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">water_sql_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>New York City Population</th>
+      <th>NYC Consumption(Million gallons per day)</th>
+      <th>Per Capita(Gallons per person per day)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1979</td>
+      <td>7102100</td>
+      <td>1512</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1980</td>
+      <td>7071639</td>
+      <td>1506</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1981</td>
+      <td>7089241</td>
+      <td>1309</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1982</td>
+      <td>7109105</td>
+      <td>1382</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1983</td>
+      <td>7181224</td>
+      <td>1424</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1984</td>
+      <td>7234514</td>
+      <td>1465</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1985</td>
+      <td>7274054</td>
+      <td>1326</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1986</td>
+      <td>7319246</td>
+      <td>1351</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1987</td>
+      <td>7342476</td>
+      <td>1447</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1988</td>
+      <td>7353719</td>
+      <td>1484</td>
+      <td>202</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -12035,19 +12826,113 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Loading an array from the .npy file</span>
 
-<span class="n">water_npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/raw_data/water_consumption.npy&#39;</span><span class="p">)</span>
+<span class="n">water_npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span>
+                 <span class="s1">&#39;water_consumption.npy&#39;</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">water_npy</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 &#39;4BE85703-1B5D-49E2-A418-75BEDD478BB5&#39; 1 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1979&#39; &#39;7102100&#39; &#39;1512&#39; &#39;213&#39;]
+ [2 &#39;971B06B7-1135-4887-B409-DAC19D845EBC&#39; 2 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1980&#39; &#39;7071639&#39; &#39;1506&#39; &#39;213&#39;]
+ [3 &#39;71AEF5AD-AA70-449C-899A-2514E97F893D&#39; 3 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1981&#39; &#39;7089241&#39; &#39;1309&#39; &#39;185&#39;]
+ [4 &#39;7914DA35-A410-44C2-A0D1-B11385B6B3F4&#39; 4 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1982&#39; &#39;7109105&#39; &#39;1382&#39; &#39;194&#39;]
+ [5 &#39;A1347CE5-F309-45C0-B372-E797A32FB0E5&#39; 5 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1983&#39; &#39;7181224&#39; &#39;1424&#39; &#39;198&#39;]
+ [6 &#39;DA07F92C-B10E-4D5B-A479-17522E0C5C8C&#39; 6 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1984&#39; &#39;7234514&#39; &#39;1465&#39; &#39;203&#39;]
+ [7 &#39;45CD9C9C-172C-4F0B-BC72-319E9B2EA6B0&#39; 7 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1985&#39; &#39;7274054&#39; &#39;1326&#39; &#39;182&#39;]
+ [8 &#39;B76329F9-740B-41BC-900B-62AA4790DAD6&#39; 8 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1986&#39; &#39;7319246&#39; &#39;1351&#39; &#39;185&#39;]
+ [9 &#39;4B66D71F-642D-4770-9123-BAB33E1E8205&#39; 9 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1987&#39; &#39;7342476&#39; &#39;1447&#39; &#39;197&#39;]
+ [10 &#39;6EB7E8EA-D4D9-4DDF-8469-ADFC8FECB06F&#39; 10 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1988&#39; &#39;7353719&#39; &#39;1484&#39; &#39;202&#39;]
+ [11 &#39;C2FAE03C-30CF-4861-9606-B96BB75C072A&#39; 11 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1989&#39; &#39;7344175&#39; &#39;1402&#39; &#39;191&#39;]
+ [12 &#39;D5507E3A-F453-4FAA-847A-AE76CDB2558C&#39; 12 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1990&#39; &#39;7335650&#39; &#39;1424&#39; &#39;194&#39;]
+ [13 &#39;7276B270-1998-4290-B645-607A2E03FE17&#39; 13 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1991&#39; &#39;7374501&#39; &#39;1469&#39; &#39;199&#39;]
+ [14 &#39;02E24AC6-6D8D-496D-933B-F174C9950DD3&#39; 14 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1992&#39; &#39;7428944&#39; &#39;1369&#39; &#39;184&#39;]
+ [15 &#39;D47DD57A-E12E-4D4F-8711-D10E37F17975&#39; 15 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1993&#39; &#39;7506166&#39; &#39;1369&#39; &#39;182&#39;]
+ [16 &#39;88ADE46C-791F-464F-8B8F-5077FFFF0EF6&#39; 16 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1994&#39; &#39;7570458&#39; &#39;1358&#39; &#39;179&#39;]
+ [17 &#39;A9F0A00A-12E5-4708-8932-6B43C5B85DD4&#39; 17 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1995&#39; &#39;7633040&#39; &#39;1326&#39; &#39;174&#39;]
+ [18 &#39;09164B3F-2924-495B-A3E3-723DA4CE3DF8&#39; 18 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1996&#39; &#39;7697812&#39; &#39;1298&#39; &#39;169&#39;]
+ [19 &#39;A2440145-4DA3-4088-8615-AFC05A857D47&#39; 19 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1997&#39; &#39;7773443&#39; &#39;1206&#39; &#39;155&#39;]
+ [20 &#39;01B75A1E-E15F-43C9-8FC2-EFFEF25C00E9&#39; 20 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1998&#39; &#39;7858259&#39; &#39;1220&#39; &#39;155&#39;]
+ [21 &#39;9223E5A0-DED5-4F20-A6ED-03FAFC4E820B&#39; 21 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;1999&#39; &#39;7947660&#39; &#39;1237&#39; &#39;156&#39;]
+ [22 &#39;68B1631D-C945-4399-BEF8-832093F772D2&#39; 22 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2000&#39; &#39;8008278&#39; &#39;1240&#39; &#39;155&#39;]
+ [23 &#39;CA110C17-74B7-4D2D-AA19-424AE4E7744A&#39; 23 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2001&#39; &#39;8024964&#39; &#39;1184&#39; &#39;148&#39;]
+ [24 &#39;4AEDDA2C-BD8C-4B95-9966-259D9B038C4F&#39; 24 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2002&#39; &#39;8041649&#39; &#39;1136&#39; &#39;141&#39;]
+ [25 &#39;87F3BE91-D193-45E3-A2D2-6C3B9FA6069C&#39; 25 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2003&#39; &#39;8058335&#39; &#39;1094&#39; &#39;136&#39;]
+ [26 &#39;C82A5F3B-2E43-40F5-A951-021C168E0C08&#39; 26 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2004&#39; &#39;8075020&#39; &#39;1100&#39; &#39;136&#39;]
+ [27 &#39;13D59A66-BA54-4ADB-9069-C38D47664340&#39; 27 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2005&#39; &#39;8091706&#39; &#39;1138&#39; &#39;141&#39;]
+ [28 &#39;64E75825-7892-4840-B57F-D0B577F83185&#39; 28 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2006&#39; &#39;8108391&#39; &#39;1069&#39; &#39;132&#39;]
+ [29 &#39;55CAFFC9-CDB2-4037-BA3F-3857278D4405&#39; 29 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2007&#39; &#39;8125077&#39; &#39;1114&#39; &#39;137&#39;]
+ [30 &#39;71ADBA93-9D04-40BD-8791-41518FA9B18E&#39; 30 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2008&#39; &#39;8141762&#39; &#39;1098&#39; &#39;135&#39;]
+ [31 &#39;F09DD97C-B560-48C4-ADAE-521D611B8389&#39; 31 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2009&#39; &#39;8158448&#39; &#39;1007&#39; &#39;123&#39;]
+ [32 &#39;BEE271B1-301E-403D-8FC7-9FD5FF4EA867&#39; 32 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2010&#39; &#39;8175133&#39; &#39;1039&#39; &#39;127&#39;]
+ [33 &#39;2F8E8569-C197-43E4-8C2A-17F455B738F0&#39; 33 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2011&#39; &#39;8175133&#39; &#39;1021&#39; &#39;125&#39;]
+ [34 &#39;41C90A3D-E8D7-4165-AEC5-0534FC6EC07E&#39; 34 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2012&#39; &#39;8336697&#39; &#39;1009&#39; &#39;121&#39;]
+ [35 &#39;EDF6197F-E302-4B92-95FB-78F3439CAFEB&#39; 35 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2013&#39; &#39;8405837&#39; &#39;1006&#39; &#39;120&#39;]
+ [36 &#39;E3F488C5-E2CF-48D2-A259-6001D7D18ABB&#39; 36 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2014&#39; &#39;8491079&#39; &#39;996&#39; &#39;117&#39;]
+ [37 &#39;15E6A978-36AA-4338-8353-F5AD0431ADEA&#39; 37 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2015&#39; &#39;8550405&#39; &#39;1009&#39; &#39;118&#39;]
+ [38 &#39;08880B90-4C92-477C-ABE5-C8DFC548C43E&#39; 38 1495480711 &#39;994730&#39;
+  1495480711 &#39;994730&#39; None &#39;2016&#39; &#39;8537673&#39; &#39;1002&#39; &#39;117&#39;]]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12065,7 +12950,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We have a cleaned data file, here represented by a small table</span>
@@ -12074,7 +12959,8 @@ div#notebook {
                          <span class="p">[</span><span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;8024964&#39;</span><span class="p">,</span> <span class="s1">&#39;1184&#39;</span><span class="p">,</span> <span class="s1">&#39;148&#39;</span><span class="p">],</span>
                         <span class="p">[</span><span class="s1">&#39;2009&#39;</span><span class="p">,</span> <span class="s1">&#39;8223444&#39;</span><span class="p">,</span> <span class="s1">&#39;1204&#39;</span><span class="p">,</span> <span class="s1">&#39;178&#39;</span><span class="p">]]}</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/new_json.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../cleaned_data/new_json.json&#39;</span><span class="p">,</span> 
+          <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cleaned_table</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
 </pre></div>
 
@@ -12094,10 +12980,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/new_numpy.npy&#39;</span><span class="p">,</span> <span class="n">cleaned_table</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../cleaned_data/new_numpy.npy&#39;</span><span class="p">,</span> <span class="n">cleaned_table</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12117,12 +13003,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We first establish a new database and connect to it</span>
 
-<span class="n">conn_out</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/cleaned_sql.db&#39;</span><span class="p">)</span>
+<span class="n">conn_out</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../cleaned_data/cleaned_sql.db&#39;</span><span class="p">)</span>
 <span class="n">cursor_out</span> <span class="o">=</span> <span class="n">conn_out</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
 <span class="c1"># Then we create a new table</span>
@@ -12155,12 +13041,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cleaned_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cleaned_table</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;nyc_population&#39;</span><span class="p">,</span><span class="s1">&#39;consumption&#39;</span><span class="p">,</span> <span class="s1">&#39;per_capita&#39;</span><span class="p">])</span>
 
-<span class="n">cleaned_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/cleaned_data/new_df.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">cleaned_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../cleaned_data/new_df.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12193,10 +13079,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/raw_data/nyc-noncompliancelist.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dfile</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s1">&#39;nyc-noncompliancelist.csv&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">dfile</span><span class="p">:</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="n">dfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>            <span class="c1"># Taking the rows as a list, but skipping the first header row</span>
@@ -12204,6 +13090,89 @@ div#notebook {
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*A1 RADIATOR EXPRESS &amp; AUTO REPAIR, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*ADELPHIA CONTAINER CORP.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;ALSCO JEWELRY OF NEW YORK, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*AMERICO IZZO\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;APEXX OMNI-GRAPHICS, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*ARCHITECTURAL COATINGS, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;ATLANTIS JEWELRY CONTRACTORS, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*B &amp; M LINEN CORP.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;BNNS CO., INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;BRILLIANT JEWELERS/MJJ INC.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;CARVIN FRENCH JEWELERS INC.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;CONTROL ELECTROPOLISHING CORP.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*DIVERSIFIED HEAT TRANSFER, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*ELDORADO FINISHING INC.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;FAM CREATIONS, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;G &amp; J SETTING CORP.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;HALMARK ARCHITECTURAL FINISHING CORP.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;HAROLD HOWARD SCOTT\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;JAMES PITTA JEWELRY POLISHING, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*JERRY\&#39;S AUTO RADIATOR, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;JP JEWELRY CORPORATION\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*LEO INGWER, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*LES ATELIERS DE VAN CLEEF &amp; ARPELS, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*M &amp; A JEWELRY POLISHING CORP.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;MAZZA/BARTHOLOMEW LTD.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*NEW RADIATOR, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*NEW YORK LAB INC.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;NYC DEPARTMENT OF EDUCATION\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;PARALLEL PRODUCTS OF NEW ENGLAND, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;PERRIGO NEW YORK, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;PETROLEUM TANK CLEANERS LTD.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*RAM JEWELRY, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;REGAL EMBLEM CO., INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;RIVIERA GOLD, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*S &amp; L AEROSPACE METALS, LLC&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;SUMER GOLD LTD.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;*T.S. MANUFACTURING, INC.&#34;\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;*TRI-MART DESIGNS LTD.\n&#39;]
+[&#39;&#34;July 1, 2011 - June 30, 2012&#39;, &#39;&#34;WASTE MANAGEMENT OF NEW YORK, L.L.C.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;† A&amp;L CESSPOOL SERVICE CORP.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;* AZAD WATCH NYC, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;BK JEWELRY CONTRACTING, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;BNNS CO. INC.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;CINER MANUFACTURING CO. INC.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;* CNV ARCHITECTURAL COATINGS INC.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;† DELL’S MARASCHINO CHERRIES CO., INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;* DIANE VON BASEDOW, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;EMA JEWELRY, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;* F. BLANCATO, LLC&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;GEMBAR SETTING INC.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;HALMARK ARCHITECTURAL FINISHING CORP.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;* INDUSTRIAL FINISHING PRODUCTS, INC&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;KYUANG M. LEE D/B/A SOLOMON JEWELRY\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;LGSP, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;* NGJ 47 INC.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;† NYC DEPARTMENT OF EDUCATION\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;NY FINE JEWELRY DESIGN INC.\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;O.K.SONG JEWELRY, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;PERRIGO NEW YORK, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;PREMIER POLISHING &amp; CONTRACTING USA, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;PROGRAMATIC PLATERS, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;RAM JEWELRY, INC.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;SARKIS ELIGUR D/B/A PALA JEWELRY\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;TELD JEWELRY DESIGN, CORP.&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;&#34;* TIMELESS DESIGNS BY JACOB BRYAN, LTD&#34;\n&#39;]
+[&#39;&#34;Jul 1, 2015 - June 30, 2016&#39;, &#39;* U.S. DEPARTMENT OF VETERANS AFFAIRS\n&#39;]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12218,7 +13187,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Challenge 1</span>
@@ -12230,7 +13199,7 @@ div#notebook {
                                                             <span class="s1">&#39;NYC Consumption(Millions galls per day)&#39;</span><span class="p">,</span>
                                                              <span class="s1">&#39;Per Capita(Gallons per person per day)&#39;</span><span class="p">])</span>
 
-<span class="c1"># Alternative, more automated way:</span>
+<span class="c1"># Alternative, less compact approach</span>
 
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -12246,23 +13215,648 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sid</th>
+      <th>id</th>
+      <th>position</th>
+      <th>created_at</th>
+      <th>created_meta</th>
+      <th>updated_at</th>
+      <th>updated_meta</th>
+      <th>meta</th>
+      <th>Year</th>
+      <th>New York City Population</th>
+      <th>NYC Consumption(Million gallons per day)</th>
+      <th>Per Capita(Gallons per person per day)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>4BE85703-1B5D-49E2-A418-75BEDD478BB5</td>
+      <td>1</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1979</td>
+      <td>7102100</td>
+      <td>1512</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>971B06B7-1135-4887-B409-DAC19D845EBC</td>
+      <td>2</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1980</td>
+      <td>7071639</td>
+      <td>1506</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>71AEF5AD-AA70-449C-899A-2514E97F893D</td>
+      <td>3</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1981</td>
+      <td>7089241</td>
+      <td>1309</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7914DA35-A410-44C2-A0D1-B11385B6B3F4</td>
+      <td>4</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1982</td>
+      <td>7109105</td>
+      <td>1382</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>A1347CE5-F309-45C0-B372-E797A32FB0E5</td>
+      <td>5</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1983</td>
+      <td>7181224</td>
+      <td>1424</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>DA07F92C-B10E-4D5B-A479-17522E0C5C8C</td>
+      <td>6</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1984</td>
+      <td>7234514</td>
+      <td>1465</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>45CD9C9C-172C-4F0B-BC72-319E9B2EA6B0</td>
+      <td>7</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1985</td>
+      <td>7274054</td>
+      <td>1326</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>B76329F9-740B-41BC-900B-62AA4790DAD6</td>
+      <td>8</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1986</td>
+      <td>7319246</td>
+      <td>1351</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>4B66D71F-642D-4770-9123-BAB33E1E8205</td>
+      <td>9</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1987</td>
+      <td>7342476</td>
+      <td>1447</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6EB7E8EA-D4D9-4DDF-8469-ADFC8FECB06F</td>
+      <td>10</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1988</td>
+      <td>7353719</td>
+      <td>1484</td>
+      <td>202</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>C2FAE03C-30CF-4861-9606-B96BB75C072A</td>
+      <td>11</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1989</td>
+      <td>7344175</td>
+      <td>1402</td>
+      <td>191</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>D5507E3A-F453-4FAA-847A-AE76CDB2558C</td>
+      <td>12</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1990</td>
+      <td>7335650</td>
+      <td>1424</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>7276B270-1998-4290-B645-607A2E03FE17</td>
+      <td>13</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1991</td>
+      <td>7374501</td>
+      <td>1469</td>
+      <td>199</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>02E24AC6-6D8D-496D-933B-F174C9950DD3</td>
+      <td>14</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1992</td>
+      <td>7428944</td>
+      <td>1369</td>
+      <td>184</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>D47DD57A-E12E-4D4F-8711-D10E37F17975</td>
+      <td>15</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1993</td>
+      <td>7506166</td>
+      <td>1369</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>88ADE46C-791F-464F-8B8F-5077FFFF0EF6</td>
+      <td>16</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1994</td>
+      <td>7570458</td>
+      <td>1358</td>
+      <td>179</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>A9F0A00A-12E5-4708-8932-6B43C5B85DD4</td>
+      <td>17</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1995</td>
+      <td>7633040</td>
+      <td>1326</td>
+      <td>174</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>09164B3F-2924-495B-A3E3-723DA4CE3DF8</td>
+      <td>18</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1996</td>
+      <td>7697812</td>
+      <td>1298</td>
+      <td>169</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>A2440145-4DA3-4088-8615-AFC05A857D47</td>
+      <td>19</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1997</td>
+      <td>7773443</td>
+      <td>1206</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>01B75A1E-E15F-43C9-8FC2-EFFEF25C00E9</td>
+      <td>20</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1998</td>
+      <td>7858259</td>
+      <td>1220</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>9223E5A0-DED5-4F20-A6ED-03FAFC4E820B</td>
+      <td>21</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>1999</td>
+      <td>7947660</td>
+      <td>1237</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>68B1631D-C945-4399-BEF8-832093F772D2</td>
+      <td>22</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2000</td>
+      <td>8008278</td>
+      <td>1240</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>CA110C17-74B7-4D2D-AA19-424AE4E7744A</td>
+      <td>23</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2001</td>
+      <td>8024964</td>
+      <td>1184</td>
+      <td>148</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>4AEDDA2C-BD8C-4B95-9966-259D9B038C4F</td>
+      <td>24</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2002</td>
+      <td>8041649</td>
+      <td>1136</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>87F3BE91-D193-45E3-A2D2-6C3B9FA6069C</td>
+      <td>25</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2003</td>
+      <td>8058335</td>
+      <td>1094</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>C82A5F3B-2E43-40F5-A951-021C168E0C08</td>
+      <td>26</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2004</td>
+      <td>8075020</td>
+      <td>1100</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>13D59A66-BA54-4ADB-9069-C38D47664340</td>
+      <td>27</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2005</td>
+      <td>8091706</td>
+      <td>1138</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>64E75825-7892-4840-B57F-D0B577F83185</td>
+      <td>28</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2006</td>
+      <td>8108391</td>
+      <td>1069</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>55CAFFC9-CDB2-4037-BA3F-3857278D4405</td>
+      <td>29</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2007</td>
+      <td>8125077</td>
+      <td>1114</td>
+      <td>137</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>71ADBA93-9D04-40BD-8791-41518FA9B18E</td>
+      <td>30</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2008</td>
+      <td>8141762</td>
+      <td>1098</td>
+      <td>135</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>F09DD97C-B560-48C4-ADAE-521D611B8389</td>
+      <td>31</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2009</td>
+      <td>8158448</td>
+      <td>1007</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>BEE271B1-301E-403D-8FC7-9FD5FF4EA867</td>
+      <td>32</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2010</td>
+      <td>8175133</td>
+      <td>1039</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>33</td>
+      <td>2F8E8569-C197-43E4-8C2A-17F455B738F0</td>
+      <td>33</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2011</td>
+      <td>8175133</td>
+      <td>1021</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>34</td>
+      <td>41C90A3D-E8D7-4165-AEC5-0534FC6EC07E</td>
+      <td>34</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2012</td>
+      <td>8336697</td>
+      <td>1009</td>
+      <td>121</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>35</td>
+      <td>EDF6197F-E302-4B92-95FB-78F3439CAFEB</td>
+      <td>35</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2013</td>
+      <td>8405837</td>
+      <td>1006</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>36</td>
+      <td>E3F488C5-E2CF-48D2-A259-6001D7D18ABB</td>
+      <td>36</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2014</td>
+      <td>8491079</td>
+      <td>996</td>
+      <td>117</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>37</td>
+      <td>15E6A978-36AA-4338-8353-F5AD0431ADEA</td>
+      <td>37</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2015</td>
+      <td>8550405</td>
+      <td>1009</td>
+      <td>118</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>38</td>
+      <td>08880B90-4C92-477C-ABE5-C8DFC548C43E</td>
+      <td>38</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>1495480711</td>
+      <td>994730</td>
+      <td>None</td>
+      <td>2016</td>
+      <td>8537673</td>
+      <td>1002</td>
+      <td>117</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Challenge 2</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;raw_data/nyc-noncompliancelist.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dfile</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s1">&#39;nyc-noncompliancelist.csv&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">dfile</span><span class="p">:</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="n">dfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
     
 <span class="n">new_data</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>   <span class="c1">#Taking the rows as list, but skipping first header row</span>
     <span class="n">rlist</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&quot;,&#39;</span><span class="p">)</span>
-    <span class="n">start_date</span> <span class="o">=</span> <span class="n">rlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Jul &#39;</span><span class="p">,</span> <span class="s1">&#39;July&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="n">end_date</span> <span class="o">=</span> <span class="n">rlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">rlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Jul &#39;</span><span class="p">,</span> <span class="s1">&#39;July&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">rlist</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
         <span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;LateReport&#39;</span>
     <span class="k">elif</span> <span class="n">rlist</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;†&#39;</span><span class="p">:</span>
@@ -12277,6 +13871,89 @@ div#notebook {
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;A1 RADIATOR EXPRESS &amp; AUTO REPAIR INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;ADELPHIA CONTAINER CORP&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;ALSCO JEWELRY OF NEW YORK INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;AMERICO IZZO&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;APEXX OMNI-GRAPHICS INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;ARCHITECTURAL COATINGS INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;ATLANTIS JEWELRY CONTRACTORS INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;B &amp; M LINEN CORP&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;BNNS CO INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;BRILLIANT JEWELERS/MJJ INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;CARVIN FRENCH JEWELERS INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;CONTROL ELECTROPOLISHING CORP&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;DIVERSIFIED HEAT TRANSFER INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;ELDORADO FINISHING INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;FAM CREATIONS INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;G &amp; J SETTING CORP&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;HALMARK ARCHITECTURAL FINISHING CORP&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;HAROLD HOWARD SCOTT&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;JAMES PITTA JEWELRY POLISHING INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#34;JERRY&#39;S AUTO RADIATOR INC&#34;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;JP JEWELRY CORPORATION&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;LEO INGWER INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;LES ATELIERS DE VAN CLEEF &amp; ARPELS INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;M &amp; A JEWELRY POLISHING CORP&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;MAZZA/BARTHOLOMEW LTD&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;NEW RADIATOR INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;NEW YORK LAB INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;NYC DEPARTMENT OF EDUCATION&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;PARALLEL PRODUCTS OF NEW ENGLAND INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;PERRIGO NEW YORK INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;PETROLEUM TANK CLEANERS LTD&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;RAM JEWELRY INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;REGAL EMBLEM CO INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;RIVIERA GOLD INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;S &amp; L AEROSPACE METALS LLC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;SUMER GOLD LTD&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;TS MANUFACTURING INC&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;LateReport&#39;, &#39;TRI-MART DESIGNS LTD&#39;]
+[&#39;July 1, 2011&#39;, &#39;June 30, 2012&#39;, &#39;NA&#39;, &#39;WASTE MANAGEMENT OF NEW YORK LLC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NS-IndustrialUsers&#39;, &#39;A&amp;L CESSPOOL SERVICE CORP&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;AZAD WATCH NYC INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;BK JEWELRY CONTRACTING INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;BNNS CO INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;CINER MANUFACTURING CO INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;LateReport&#39;, &#39;CNV ARCHITECTURAL COATINGS INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;DELL’S MARASCHINO CHERRIES CO INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;DIANE VON BASEDOW INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;EMA JEWELRY INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;F BLANCATO LLC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;GEMBAR SETTING INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;HALMARK ARCHITECTURAL FINISHING CORP&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;INDUSTRIAL FINISHING PRODUCTS INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;KYUANG M LEE D/B/A SOLOMON JEWELRY&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;LGSP INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;LateReport&#39;, &#39;NGJ 47 INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NS-IndustrialUsers&#39;, &#39;NYC DEPARTMENT OF EDUCATION&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;NY FINE JEWELRY DESIGN INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;OKSONG JEWELRY INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;PERRIGO NEW YORK INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;PREMIER POLISHING &amp; CONTRACTING USA INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;PROGRAMATIC PLATERS INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;RAM JEWELRY INC&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;SARKIS ELIGUR D/B/A PALA JEWELRY&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;TELD JEWELRY DESIGN CORP&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;NA&#39;, &#39;TIMELESS DESIGNS BY JACOB BRYAN LTD&#39;]
+[&#39;July1, 2015&#39;, &#39;June 30, 2016&#39;, &#39;LateReport&#39;, &#39;US DEPARTMENT OF VETERANS AFFAIRS&#39;]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
